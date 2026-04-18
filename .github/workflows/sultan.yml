@@ -84,6 +84,8 @@ jobs:
       - name: Apply SUSFS Patches
         if: contains(matrix.features, 'susfs')
         run: |
+          set -euo pipefail
+
           echo "Changing to configuration directory: $CONFIG..."
           cd "$CONFIG"
 
@@ -96,10 +98,25 @@ jobs:
           cp ../susfs4ksu/kernel_patches/fs/* ./fs/
           cp ../susfs4ksu/kernel_patches/include/linux/* ./include/linux/
 
-          # Change to common directory and apply SUSFS patch
-          patch -p1 < 50_add_susfs_in_gki-${{ inputs.android_version }}-${{ inputs.kernel_version }}.patch || true
+          # Copy local compatibility fixes
+          cp ../kernel_patches/sultan/open.c_fix.patch ./
           cp ../kernel_patches/sultan/sys.c_fix.patch ./
+
+          # Apply upstream SUSFS patch first.
+          # We allow a partial apply here because Sultan's tree already diverged,
+          # but we do NOT continue silently if rejects remain after our local fixes.
+          patch -p1 < 50_add_susfs_in_gki-${{ inputs.android_version }}-${{ inputs.kernel_version }}.patch || true
+
+          # Apply local compatibility fixes for Sultan tree
+          patch -p1 < open.c_fix.patch
           patch -p1 < sys.c_fix.patch
+
+          echo "Checking for patch rejects..."
+          if find . -type f -name '*.rej' | grep -q .; then
+            echo "Patch rejects found:"
+            find . -type f -name '*.rej' -print
+            exit 1
+          fi
 
       - name: Configure KernelSU
         if: contains(matrix.features, 'wksu')
