@@ -1,86 +1,116 @@
-# Wild Kernels for Android
+# Quantum-Kernel
 
-## Your warranty is no longer valid!
+<p align="center">
+  <img src="https://img.shields.io/badge/Base-Sultan-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Wild%20KSU-Built--In-6f42c1?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/SUSFS-v2.0.0-1f883d?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/SELinux-Enforcing-success?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Android-16-3ddc84?style=for-the-badge" />
+</p>
 
-I am **not responsible** for bricked devices, damaged hardware, or any issues that arise from using this kernel.
-
-**Please** do thorough research and fully understand the features included in this kernel before flashing it!
-
-By flashing this kernel, **YOU** are choosing to make these modifications. If something goes wrong, **do not blame me**!
-
----
-
-### Proceed at your own risk!
-
----
-
-# Kernels:
- 
-[GKI](https://github.com/WildKernels/GKI_KernelSU_SUSFS)  
-[Sultan](https://github.com/WildKernels/Sultan_KernelSU_SUSFS)  
-[OnePlus](https://github.com/WildKernels/OnePlus_KernelSU_SUSFS)  
-[Legacy Pixels](https://github.com/WildKernels/Pixel_KernelSU_SUSFS)  
+<p align="center">
+  <b>Quantum-Kernel</b> is a <b>Sultan-based kernel</b> for <b>Pixel Tensor devices</b>, focused on stability, clean integration, and practical daily use.
+</p>
 
 ---
 
-# Other Links:
+## Overview
 
-[Kernel Patches](https://github.com/WildKernels/kernel_patches)  
-[Old Build Scripts](https://github.com/TheWildJames/kernel_build_scripts)  
-[Horizon Kernel Flasher](https://github.com/libxzr/HorizonKernelFlasher)  
+Quantum-Kernel keeps the strong Sultan kernel base while adding project-specific integration work, packaging, release automation, and optional support for **Wild KSU** and **SUSFS**.
 
----
+This project is meant to stay clean, usable, and reliable.
 
-# Installation instructions: 
-
-Follow the steps for GKI:  
-[Installation](https://kernelsu.org/guide/installation.html)
-
-To get boot.img format:  
-[Get My Kernel Format](https://github.com/TheWildJames/Get_My_Kernel_Format)
+It is not designed to be a random collection of questionable tweaks. The goal is to provide a solid **Sultan-based kernel** with a proper **stock** option and a modern **root-ready** option for users who want **Wild KSU** and **SUSFS**.
 
 ---
 
-# Features
+## Variants
 
-- **KernelSU**: KernelSU is a root solution for Android GKI devices, it works in kernel mode and grants root permission to userspace applications directly in kernel space.
-- **SUSFS**: An addon root hiding kernel patches and userspace module for KernelSU.
+### `stock`
+Pure Quantum-Kernel base build with no Wild KSU or SUSFS integration.
 
----
-
-# Credits
-
-- **KernelSU**: Developed by [tiann](https://github.com/tiann/KernelSU).
-- **KernelSU-Next**: Developed by [rifsxd](https://github.com/KernelSU-Next/KernelSU-Next).
-- **SUSFS**: Developed by [simonpunk](https://gitlab.com/simonpunk/susfs4ksu.git).
-- **SUSFS Module**: Developed by [sidex15](https://github.com/sidex15).
-- **Sultan Kernels**: Developed by [kerneltoast](https://github.com/kerneltoast).
-
-Special thanks to the open-source community for their contributions!
+### `wksu-susfs`
+Quantum-Kernel with:
+- **Wild KSU** built in
+- **SUSFS v2.0.0**
+- **Inline hook mode**
+- Project-specific integration and config changes
 
 ---
 
-# Support
+## Current Validation
 
-If you encounter any issues or need help, feel free to open an issue in this repository or reach out to me.
+Current public validation includes:
 
----
-
-# Disclaimer
-
-Flashing this kernel will void your warranty, and there is always a risk of bricking your device. Please make sure to back up your data and ensure you understand the risks before proceeding.
-
-**Proceed at your own risk!**
+- **Android 16 stock**
+- **SELinux Enforcing**
+- **Wild KSU built-in working**
+- **SUSFS inline mode working**
+- Successful boot confirmation on tested device(s)
 
 ---
 
-[Telegram](https://t.me/TheWildJames)  
-[Telegram Group](https://t.me/WildKernelsTG)  
+## Build Targets
 
-# Special thanks to the following people for their contributions!
-This helps me alot! <3
+The current workflow produces builds for:
 
-[simonpunk](https://gitlab.com/simonpunk/susfs4ksu.git) - Created SUSFS!  
-[sidex15](https://github.com/sidex15) - Created module!
+- `gs201`
+- `zuma`
+- `zumapro`
 
-If you have contributed and are not here please remind me!
+Runtime testing may vary depending on device, firmware version, and setup.
+
+---
+
+## Downloads
+
+### Releases
+- [Latest Release](https://github.com/Drizzy07x/Quantum-Kernel/releases/latest)
+- [All Releases](https://github.com/Drizzy07x/Quantum-Kernel/releases)
+
+### Source
+- [Quantum-Kernel Repository](https://github.com/Drizzy07x/Quantum-Kernel)
+
+---
+
+## Installation
+
+Flash the correct **AnyKernel3** package for your device and chosen variant.
+
+### Example artifact names
+- `kernel-gs201-stock`
+- `kernel-gs201-wksu-susfs`
+- `kernel-zuma-stock`
+- `kernel-zuma-wksu-susfs`
+- `kernel-zumapro-stock`
+- `kernel-zumapro-wksu-susfs`
+
+---
+
+## Notes
+
+- Always flash the correct build for your device codename
+- Keep a known working boot image or recovery path before testing a new kernel
+- The `wksu-susfs` variant is intended for users who specifically want **Wild KSU + SUSFS**
+- First public validation has been done on **Android 16 stock**
+
+---
+
+## Credits
+
+Quantum-Kernel would not exist without the work of the people and projects below.
+
+- **[Sultan / kerneltoast](https://github.com/kerneltoast/android_kernel_google_tensynos)** — for the Sultan kernel base used by this project
+- **[WildKernels](https://github.com/WildKernels/Wild_KSU)** — for **Wild KSU**
+- **[simonpunk](https://gitlab.com/simonpunk/susfs4ksu)** — for **SUSFS / susfs4ksu**
+- **[sidex15](https://github.com/sidex15/ksu_module_susfs)** — for the **ksu_module_susfs** ecosystem
+- **[TheWildJames](https://github.com/TheWildJames)** — for packaging and workflow resources used in this project, including **AnyKernel3** branches and related patch resources
+- Everyone contributing to the wider **KernelSU**, **SUSFS**, **Pixel kernel**, and Android kernel modding community
+
+---
+
+## Disclaimer
+
+You are responsible for what you flash.
+
+Always make sure you are using the correct build for your device and keep a recovery path available in case something goes wrong.
