@@ -75,7 +75,6 @@ jobs:
         run: |
           echo "Changing to configuration directory: $CONFIG..."
           cd "$CONFIG"
-          rm -r KernelSU
 
           echo "Adding KernelSU..."
           git submodule update --init --recursive
