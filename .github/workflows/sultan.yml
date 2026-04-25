@@ -53,7 +53,7 @@ jobs:
 
       - name: Set CONFIG Environment Variable
         run: |
-          CONFIG="android_kernel_google_tensynos"
+          CONFIG="anaconda_kernel_google_tensynos"
           echo "CONFIG=$CONFIG" >> "$GITHUB_ENV"
           echo "CONFIG set to: $CONFIG"
 
@@ -66,7 +66,7 @@ jobs:
 
           git clone https://github.com/TheWildJames/AnyKernel3.git -b "$ANYKERNEL_BRANCH"
           git clone https://github.com/TheWildJames/kernel_patches.git wild_kernel_patches
-          git clone https://github.com/kerneltoast/android_kernel_google_tensynos
+          git clone https://github.com/Trijal08/anaconda_kernel_google_tensynos.git -b anaconda-tensynos-qpr3
           SUSFS_BRANCH="gki-${{ inputs.android_version }}-${{ inputs.kernel_version }}"
           git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "$SUSFS_BRANCH"
 
