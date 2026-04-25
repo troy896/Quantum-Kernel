@@ -8,22 +8,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-kernel-gs201:
-    uses: ./.github/workflows/sultan.yml
-    secrets: inherit
-    with:
-      codename: "gs201"
-      android_version: "android14"
-      kernel_version: "6.1"
-
-  build-kernel-zuma:
-    uses: ./.github/workflows/sultan.yml
-    secrets: inherit
-    with:
-      codename: "zuma"
-      android_version: "android14"
-      kernel_version: "6.1"
-
   build-kernel-zumapro:
     uses: ./.github/workflows/sultan.yml
     secrets: inherit
@@ -35,11 +19,9 @@ jobs:
   trigger-release:
     runs-on: ubuntu-latest
     needs:
-      - build-kernel-gs201
-      - build-kernel-zuma
       - build-kernel-zumapro
     env:
-      REPO_OWNER: Drizzy07x
+      REPO_OWNER: troy896
       REPO_NAME: Quantum-Kernel
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       RELEASE_NAME: "Quantum-Kernel"
