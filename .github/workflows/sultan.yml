@@ -77,6 +77,8 @@ jobs:
           cd "$CONFIG"
 
           echo "Adding KernelSU..."
+          git submodule remove KernelSU
+          git submodule update --init --recursive
           # curl -LSs "https://raw.githubusercontent.com/WildKernels/Wild_KSU/stable/kernel/setup.sh" | bash -s canary
           curl -LSs "https://raw.githubusercontent.com/ReSukiSU/ReSukiSU/main/kernel/setup.sh" | bash -s main
 
