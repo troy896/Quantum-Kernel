@@ -77,7 +77,8 @@ jobs:
           cd "$CONFIG"
 
           echo "Adding KernelSU..."
-          curl -LSs "https://raw.githubusercontent.com/WildKernels/Wild_KSU/stable/kernel/setup.sh" | bash -s canary
+          # curl -LSs "https://raw.githubusercontent.com/WildKernels/Wild_KSU/stable/kernel/setup.sh" | bash -s canary
+          curl -LSs "https://raw.githubusercontent.com/ReSukiSU/ReSukiSU/main/kernel/setup.sh" | bash -s main
 
       - name: Apply SUSFS Patches
         if: contains(matrix.features, 'susfs')
