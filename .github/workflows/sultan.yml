@@ -82,7 +82,7 @@ jobs:
           curl -LSs "https://raw.githubusercontent.com/ReSukiSU/ReSukiSU/main/kernel/setup.sh" | bash -s main
 
       - name: Apply SUSFS Patches
-        if: contains(matrix.features, 'susfs')
+        if: false
         run: |
           set -euo pipefail
 
@@ -112,7 +112,7 @@ jobs:
           fi
 
       - name: Configure KernelSU
-        if: contains(matrix.features, 'wksu')
+        if: false
         run: |
           cd "$CONFIG"
           echo "# KernelSU Configuration" >> ./arch/arm64/configs/${{ inputs.codename }}_defconfig
@@ -184,7 +184,7 @@ jobs:
           echo "Changing to configuration directory: $CONFIG..."
           cd "$CONFIG"
 
-          sed -i 's/CONFIG_LOCALVERSION="-Sultan"/CONFIG_LOCALVERSION="-Quantum-Kernel"/' ./arch/arm64/configs/${{ inputs.codename }}_defconfig
+          sed -i 's/CONFIG_LOCALVERSION="-Anaconda"/CONFIG_LOCALVERSION="-Cashiris-Kernel"/' ./arch/arm64/configs/${{ inputs.codename }}_defconfig
 
           if grep -q '^CONFIG_LOCALVERSION_AUTO=' ./arch/arm64/configs/${{ inputs.codename }}_defconfig; then
             sed -i 's/^CONFIG_LOCALVERSION_AUTO=.*/CONFIG_LOCALVERSION_AUTO=n/' ./arch/arm64/configs/${{ inputs.codename }}_defconfig
