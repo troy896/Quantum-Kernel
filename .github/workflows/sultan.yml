@@ -66,7 +66,7 @@ jobs:
 
           git clone https://github.com/TheWildJames/AnyKernel3.git -b "$ANYKERNEL_BRANCH"
           git clone https://github.com/TheWildJames/kernel_patches.git wild_kernel_patches
-          git clone https://github.com/Trijal08/anaconda_kernel_google_tensynos.git -b anaconda-tensynos-qpr3
+          git clone https://github.com/troy896/anaconda_kernel_google_tensynos.git
           SUSFS_BRANCH="gki-${{ inputs.android_version }}-${{ inputs.kernel_version }}"
           git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "$SUSFS_BRANCH"
 
@@ -75,9 +75,9 @@ jobs:
         run: |
           echo "Changing to configuration directory: $CONFIG..."
           cd "$CONFIG"
+          rm -r KernelSU
 
           echo "Adding KernelSU..."
-          git submodule remove KernelSU
           git submodule update --init --recursive
           # curl -LSs "https://raw.githubusercontent.com/WildKernels/Wild_KSU/stable/kernel/setup.sh" | bash -s canary
           curl -LSs "https://raw.githubusercontent.com/ReSukiSU/ReSukiSU/main/kernel/setup.sh" | bash -s main
